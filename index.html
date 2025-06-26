@@ -1,17 +1,26 @@
-<html><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta
 name="description"
 content="Innovating Tomorrow, Today!"/>
 <meta name="robots" content="index, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=VT323&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <title>United Information Technologies</title>
 <style>
   :root {
-    --primary-color: #4B5320;
-    --secondary-color: #00308F;
-    --text-color: #000000;
-    --background-color: #FFFFFF;
+    --primary-color: #4B5320; /* Army Green */
+    --secondary-color: #00308F; /* Royal Blue */
+    --text-color: #333333;
+    --background-color: #FDFDFD;
+    --card-background: #FFFFFF;
+    --terminal-bg: #1a1a1a;
+    --terminal-text: #00FF41; /* Classic green terminal text */
+    --dark-bg: #2a2a2e;
   }
 
   body, html {
@@ -23,10 +32,11 @@ content="Innovating Tomorrow, Today!"/>
     scroll-behavior: smooth;
   }
 
+  /* Header and Navigation */
   .header {
     background-color: var(--primary-color);
     color: white;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     position: fixed;
     width: 100%;
     top: 0;
@@ -34,106 +44,146 @@ content="Innovating Tomorrow, Today!"/>
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-sizing: border-box;
   }
 
   .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    padding: 0.5rem;
   }
 
   .nav-links {
-    margin-right: auto;
-    margin-left: auto;
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
   .nav-links a {
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
+    font-weight: 500;
   }
 
   .nav-links a:hover {
     color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
   }
+  
+  /* START OF ENTROPY FEED CSS */
+  .entropy-feed {
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    background-color: rgba(0,0,0,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.3);
+    text-align: right;
+  }
+  .entropy-feed span {
+    display: block;
+    line-height: 1.2;
+    color: var(--terminal-text);
+  }
+  #entropy-value {
+    color: #ff5f56; /* Red for emphasis */
+    font-weight: bold;
+  }
+  /* END OF ENTROPY FEED CSS */
 
+  /* Hero Section */
   .hero {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgba(78, 91, 49, 0.5), rgba(78, 91, 49, 0.5)), url('campus.jpg') no-repeat center center;
+    background: linear-gradient(rgba(78, 91, 49, 0.6), rgba(78, 91, 49, 0.6)), url('https://images.unsplash.com/photo-1562774053-701939374585?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODc5NzV8MHwxfGFsbHx8fHx8fHx8fDE3MTkyMjc0NTN8&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center;
     background-size: cover;
+    background-attachment: fixed;
     color: white;
     text-align: center;
+    padding: 60px 1rem 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .hero-content {
+      background-color: rgba(0,0,0,0.4);
+      padding: 2rem 3rem;
+      border-radius: 10px;
   }
 
   .hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
   }
 
   .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     max-width: 600px;
     margin: 0 auto;
+    font-weight: 400;
   }
-
+  
+  /* General Content Section Styling */
   .content-section {
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
+    text-align: center;
   }
 
   .content-section h2 {
     color: var(--primary-color);
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
   }
-
-  .programs {
+  
+  .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
   }
 
-  .program-card {
-    background-color: white;
+  /* Universal Card Style */
+  .styled-card {
+    background-color: var(--card-background);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
-    width: 300px;
-    transition: transform 0.3s ease;
-  }
-
-  .program-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .program-card h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-  }
-
-  .about-section {
-    background-color: white;
-    padding: 4rem 2rem;
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+  }
+
+  .styled-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* About Section */
+  .about-section {
+    background-color: var(--card-background);
   }
 
   .about-content {
     max-width: 800px;
     margin: 0 auto;
+    text-align: justify;
   }
-
+  
   .stats {
     display: flex;
     justify-content: space-around;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
   }
 
   .stat-item {
     text-align: center;
+    margin: 1rem;
   }
 
   .stat-number {
@@ -147,40 +197,297 @@ content="Innovating Tomorrow, Today!"/>
     color: var(--text-color);
   }
 
+
+  /* START OF ADMISSIONS PORTAL CSS */
+  #admissions {
+      background-color: var(--dark-bg);
+  }
+  #admissions h2 { color: var(--background-color); }
+
+  .admissions-portal {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--card-background);
+      padding: 2rem;
+      border-radius: 10px;
+  }
+
+  .quiz-question {
+      display: none;
+  }
+  .quiz-question.active {
+      display: block;
+  }
+  .quiz-question h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+  }
+  .quiz-options label {
+      display: block;
+      background: #f0f0f0;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: left;
+  }
+  .quiz-options label:hover {
+      background: #e0e0e0;
+  }
+  .quiz-options input[type="radio"] {
+      margin-right: 10px;
+  }
+  #applicant-name {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+  }
+  .quiz-nav {
+      margin-top: 2rem;
+  }
+  .quiz-button {
+      background-color: var(--primary-color);
+      color: white; border: none; padding: 0.8rem 1.5rem;
+      border-radius: 5px; font-size: 1rem; cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  .quiz-button:hover { background-color: var(--secondary-color); }
+  
+  #results-card {
+      border: 5px solid var(--primary-color);
+      padding: 1.5rem;
+      text-align: center;
+  }
+  #results-card h3 { color: var(--primary-color); }
+  #student-id-photo {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: #ccc; margin: 1rem auto;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; font-weight: bold; color: var(--primary-color);
+      border: 3px solid var(--secondary-color);
+  }
+  #student-name { font-size: 1.5rem; font-weight: bold; }
+  #student-title { color: var(--secondary-color); font-style: italic; }
+  /* END OF ADMISSIONS PORTAL CSS */
+
+  /* START OF RESEARCH JOURNAL CSS */
+  .research-article {
+      max-width: 800px;
+      background: var(--card-background);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 0 auto 2rem auto;
+      text-align: left;
+      border-left: 5px solid var(--primary-color);
+  }
+  .research-article h3 { margin-top: 0; color: var(--primary-color); }
+  .article-meta {
+      font-style: italic; color: #555;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem; margin-bottom: 1rem;
+  }
+  .article-abstract { font-family: 'EB Garamond', serif; font-size: 1.1rem; line-height: 1.6; }
+  /* END OF RESEARCH JOURNAL CSS */
+
+  /* START OF UN-ACCREDITATION BUREAU CSS */
+  #standing {
+      background-color: var(--card-background);
+  }
+  .bureau-card {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      padding: 1.5rem;
+      border-radius: 5px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      text-align: left;
+  }
+  .bureau-seal {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+  }
+  .bureau-card h3 { margin: 0 0 0.5rem 0; color: #c00; }
+  /* END OF UN-ACCREDITATION BUREAU CSS */
+  
+  /* Other sections */
+  #faculty { background-color: var(--card-background); }
+  #terminal-section { background-color: var(--dark-bg); padding: 5rem 2rem;}
+  #terminal-section h2 { color: var(--background-color); }
+  .faculty-card img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--primary-color); }
+  .faculty-title { font-style: italic; color: var(--secondary-color); }
+
+  /* START OF TERMINAL CSS */
+  .terminal {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      background-color: var(--terminal-bg);
+      border: 2px solid var(--terminal-text);
+      border-radius: 5px;
+      margin: 0 auto;
+      box-shadow: 0 0 15px var(--terminal-text);
+      font-family: 'VT323', monospace;
+      color: var(--terminal-text);
+      display: flex;
+      flex-direction: column;
+  }
+
+  .terminal-header {
+      background-color: var(--terminal-text);
+      color: var(--terminal-bg);
+      padding: 5px 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .terminal-controls span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-left: 5px;
+      background: #ff5f56;
+      border: 1px solid #e0443e;
+  }
+  .terminal-controls span:nth-child(2){ background: #ffbd2e; border-color: #dea123;}
+  .terminal-controls span:nth-child(3){ background: #27c93f; border-color: #1aae29;}
+
+  .terminal-body {
+      flex-grow: 1;
+      padding: 10px;
+      overflow-y: auto;
+      line-height: 1.4;
+  }
+  
+  .terminal-line {
+      white-space: pre-wrap;
+  }
+
+  .terminal-prompt {
+      display: flex;
+      align-items: center;
+  }
+  
+  .terminal-prompt span {
+      margin-right: 5px;
+  }
+
+  #terminal-input {
+      background: transparent;
+      border: none;
+      color: var(--terminal-text);
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+      width: 100%;
+      outline: none;
+  }
+
+  .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.4rem;
+      background: var(--terminal-text);
+      animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+      from, to { background-color: transparent }
+      50% { background-color: var(--terminal-text); }
+  }
+  /* END OF TERMINAL CSS */
+
+    /* START OF MODAL CSS */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+  }
+  
+  .modal-overlay.active .modal-content {
+      transform: scale(1);
+  }
+
+  .modal-content h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+
+  .modal-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .modal-button:hover {
+    background-color: var(--secondary-color);
+  }
+  /* END OF MODAL CSS */
+
+  /* Footer */
   footer {
     background-color: var(--primary-color);
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
+  
+  footer a { color: white; text-decoration: underline; }
+  footer a:hover { color: var(--secondary-color); }
 
+
+  /* Responsive Design */
   @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .nav-links {
-      margin-top: 1rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    .hero p {
-      font-size: 1rem;
-    }
-
-    .program-card {
-      width: 100%;
-    }
-
-    .stats {
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .header { flex-direction: column; align-items: center; }
+    .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; padding: 0.5rem 0; }
+    .entropy-feed { text-align: center; margin-top: 0.5rem; width: 100%; }
+    .hero h1 { font-size: 2.5rem; }
+    .content-section { padding: 4rem 1rem; }
+    .bureau-card { flex-direction: column; text-align: center; }
   }
+
 </style>
 </head>
 <body>
@@ -189,86 +496,165 @@ content="Innovating Tomorrow, Today!"/>
     <nav class="nav-links">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#programs">Study</a>
-      <a href="#contact">Contact</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#research">Research</a>
+      <a href="#faculty">Faculty</a>
+      <a href="#standing">Standing</a>
+      <a href="#terminal-section">Terminal</a>
     </nav>
+    <!-- START OF ENTROPY FEED -->
+    <div class="entropy-feed">
+      <span id="entropy-label">Campus Entropy: <b id="entropy-value">98.7%</b></span>
+      <span id="paradox-label">Paradoxes Contained: <b id="paradox-value">42</b></span>
+    </div>
+    <!-- END OF ENTROPY FEED -->
   </header>
 
   <section id="home" class="hero">
-    <div>
+    <div class="hero-content">
       <h1>The United Institute of Technology</h1>
       <p>We Will Make It Happen</p>
     </div>
   </section>
 
-  <section id="about" class="about-section">
+  <section id="about" class="about-section content-section">
     <div class="about-content">
       <h2>About The United Institute of Technology</h2>
-      <p>Situated at the confluence of expansive intellectual ambition and principled epistemology in the heart of the Lone Star State, The United Institute of Technology (YUZHOU.COLLEGE) emerges as a paragon of academic and technological excellence. Our institution functions not merely as an academic establishment, but as a critical nexus for interdisciplinary innovation, theoretical advancement, and strategic influence.
-      <p>YUZHOU.COLLEGE is a consortia of highly specialized professionals—Scientists, Researchers, Architects, Developers, Engineers, and Fellows—each contributing to a dynamic, interdependent scholarly ecosystem. This community is unified by a shared imperative: to harness and direct the full spectrum of human inquiry and technological potential across this lemincational existence toward transformative societal impact.</p>
-      <p>Established on foundational principles of methodological rigor, cognitive recalibration, individual autonomy, and a steadfast gideonic ethos, the Institute has served as a seminal driver of intellectual and technological progress within the American context for over eight decades. Our legacy is both extensive and intensifying, marked by sustained contributions to emergent disciplines and resilient infrastructures.</p>
-      <p>The genesis of YUZHOU.COLLEGE was predicated on a visionary framework: to cultivate an academic environment characterized by systemic cohesion, pedagogical innovation, and exponential growth capacity. This vision was operationalized through a hybrid model combining research incubation, applied praxis, and exploratory frontiers analogous to interstellar exploration. Collaborative engagement is not peripheral; it is the institution's operational core, and intellectual development is a rigorously upheld institutional mandate.</p>
-      <p>Our curriculum is meticulously designed to transcend traditional academic boundaries, integrating diverse fields such as Computer Science, Architecture, Engineering, Biological Research, and Sustainable Electrodynamics. This interdisciplinary approach is not merely an academic exercise; it is a strategic imperative aimed at addressing the multifaceted challenges of our time.</p>
-      <p>In an era defined by rapid technological evolution and complex global challenges, YUZHOU.COLLEGE stands as a beacon of hope and a catalyst for change. We are committed to fostering a culture of innovation, collaboration, and ethical responsibility, ensuring that our graduates are not only equipped with the knowledge and skills necessary for success but also imbued with a sense of purpose and social responsibility.</p>
-      <p>Currently recognized as a vanguard entity in Technological Education, YUZHOU.COLLEGE boasts a distinguished record of cultivating graduates who are not only proficient but ideologically aligned with frameworks of ethical innovation, systems-level thinking, and strategic implementation. Our alumni function as catalytic agents of progress, delivering measurable outcomes across multifarious domains.</p>
-      <p>Welcome to YUZHOU.COLLEGE—a sovereign academic organism engineered to synthesize inquiry, optimize cognition, and architect the future. Engage responsibly; epistemic velocity may exceed comfort thresholds.</p>
-</p>
+      <p>Situated at the confluence of expansive intellectual ambition and principled epistemology in the heart of the Lone Star State, The United Institute of Technology (YUZHOU.COLLEGE) emerges as a paragon of academic and technological excellence. Our institution functions not merely as an academic establishment, but as a critical nexus for interdisciplinary innovation, theoretical advancement, and strategic influence.</p>
       <div class="stats">
-        <div class="stat-item">
-          <div class="stat-number">1234567890</div>
-          <div class="stat-label">Students</div>
+        <div class="stat-item"><div class="stat-number">1.2B</div><div class="stat-label">Students</div></div>
+        <div class="stat-item"><div class="stat-number">768</div><div class="stat-label">Faculty</div></div>
+        <div class="stat-item"><div class="stat-number">8,192</div><div class="stat-label">Partnerships</div></div>
+        <div class="stat-item"><div class="stat-number">$9.1B</div><div class="stat-label">R&D Funding</div></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- START OF ADMISSIONS SECTION -->
+  <section id="admissions" class="content-section">
+    <h2>Admissions & Psychometric Profiling</h2>
+    <div class="admissions-portal">
+        <div id="quiz-container">
+            <!-- Question 1: Name -->
+            <div class="quiz-question active" data-step="1">
+                <h3>Psychometric Profiling Initiated. State your designation.</h3>
+                <input type="text" id="applicant-name" placeholder="e.g., Jane Doe, Entity 404">
+                <div class="quiz-nav"><button class="quiz-button" onclick="nextQuestion(2)">Log Designation &raquo;</button></div>
+            </div>
+            <!-- Question 2 -->
+            <div class="quiz-question" data-step="2">
+                <h3>A trolley is about to run over five people. You can pull a lever to divert it to another track, where it will run over one person. The second track, however, loops back and also runs over you. What is the optimal shape for the lever?</h3>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> A perfect lemniscate, for thematic consistency.</label>
+                    <label><input type="radio" name="q2" value="b"> A Klein bottle, to contain the paradox.</label>
+                    <label><input type="radio" name="q2" value="c"> A sledgehammer.</label>
+                </div>
+                <div class="quiz-nav"><button class="quiz-button" onclick="nextQuestion(3)">Process Axiom &raquo;</button></div>
+            </div>
+            <!-- Question 3 -->
+            <div class="quiz-question" data-step="3">
+                <h3>Choose your preferred state of matter:</h3>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a"> Solid (Dependable, structured, boring).</label>
+                    <label><input type="radio" name="q3" value="b"> Supercritical Fluid (Defies categorization).</label>
+                    <label><input type="radio" name="q3" value="c"> The glowing plasma inside a novelty lamp.</label>
+                </div>
+                <div class="quiz-nav"><button class="quiz-button" onclick="calculateResults()">Calculate Epistemological Trajectory</button></div>
+            </div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">768</div>
-          <div class="stat-label">Faculty Members</div>
+        <!-- Results Card -->
+        <div id="results-container" style="display: none;">
+            <h3>Evaluation Complete. Welcome to the Collective.</h3>
+            <div id="results-card">
+                <p>YUZHOU INSTITUTE OF TECHNOLOGY</p>
+                <div id="student-id-photo"></div>
+                <h4 id="student-name"></h4>
+                <p>has been designated:</p>
+                <h3 id="student-title"></h3>
+                <p>ID#: YU-775-[REDACTED]</p>
+            </div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">8192</div>
-          <div class="stat-label">Corporate Employment Partnerships</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">9128000000</div>
-          <div class="stat-label">Annual Research and Development Funding</div>
-        </div>
+    </div>
+  </section>
+  <!-- END OF ADMISSIONS SECTION -->
+  
+  <!-- START OF RESEARCH JOURNAL SECTION -->
+  <section id="research" class="content-section">
+    <h2>Journal of Incomprehensible Results</h2>
+    <div class="research-article">
+        <h3>The Ergonomics of Non-Linear Time Travel: A Study in Existential Discomfort</h3>
+        <p class="article-meta">By Dr. Ignatius Quantum | Vol. 42, Issue 3</p>
+        <blockquote class="article-abstract">
+        This paper presents findings from a decade-long study into the psychophysical strain induced by trans-temporal displacement. Results indicate a strong correlation between causal paradoxes and lower back pain. We conclude that while visiting the past is theoretically possible, it is profoundly inconvenient and requires significant lumbar support. Future work will explore the weaponization of déjà vu as a strategic deterrent.
+        </blockquote>
+    </div>
+    <div class="research-article">
+        <h3>The Fern as a Signifier: A Deconstruction of Photosynthetic Discourse in Late-Stage Capitalism</h3>
+        <p class="article-meta">By Dr. Seraphina Vortex | Vol. 12, Issue 8</p>
+        <blockquote class="article-abstract">
+        Herein, we interrogate the modern houseplant not as a biological organism, but as a semiotic battleground. The fern, in particular, is deconstructed as a signifier of bourgeois domesticity that masks a deeper, unspoken complicity in the commodification of nature itself. The paper argues that watering your plants is an act of performative allegiance to a hegemonic, chlorophyll-based power structure.
+        </blockquote>
+    </div>
+  </section>
+  <!-- END OF RESEARCH JOURNAL SECTION -->
+  
+  <section id="faculty" class="content-section">
+    <h2>Meet Our Esteemed Faculty</h2>
+    <div class="card-container">
+      <div class="styled-card faculty-card">
+        <img src="https://placehold.co/150x150/4B5320/FFFFFF?text=IQ" alt="Headshot of Dr. Ignatius Quantum" onerror="this.onerror=null;this.src='https://placehold.co/150x150';">
+        <h3>Dr. Ignatius Quantum</h3>
+        <p class="faculty-title">Chair of Chrono-Mechanics & Applied Paradoxes</p>
+      </div>
+      <div class="styled-card faculty-card">
+        <img src="https://placehold.co/150x150/00308F/FFFFFF?text=SV" alt="Headshot of Dr. Seraphina Vortex" onerror="this.onerror=null;this.src='https://placehold.co/150x150';">
+        <h3>Dr. Seraphina Vortex</h3>
+        <p class="faculty-title">Professor of Post-Structuralist Semiotics</p>
+      </div>
+      <div class="styled-card faculty-card">
+        <img src="https://placehold.co/150x150/000000/FFFFFF?text=BS" alt="Headshot of B.A. Sledgehammer" onerror="this.onerror=null;this.src='https://placehold.co/150x150';">
+        <h3>B. A. Sledgehammer</h3>
+        <p class="faculty-title">Adjunct of Aggressive Engineering</p>
       </div>
     </div>
   </section>
 
-  <section id="programs" class="content-section">
-    <h2>Our Programs of Study</h2>
-    <div class="programs">
-      <div class="program-card">
-        <h3>Computer Science, Architecture, and Engineering</h3>
-        <p>Understand the world of algorithms, software, and hardware development.</p>
+  <!-- START OF UN-ACCREDITATION BUREAU SECTION -->
+  <section id="standing" class="content-section">
+      <h2>Institutional Standing & Non-Accreditation</h2>
+      <div class="bureau-card">
+        <svg class="bureau-seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#e0e0e0" stroke="#333" stroke-width="2"/><text x="50" y="55" font-family="EB Garamond" font-size="12" text-anchor="middle">GAFC</text></svg>
+        <div>
+            <h3>REJECTED by The Global Alliance for Factual Coherency</h3>
+            <p>Reason for non-accreditation: "The institution's curriculum, particularly the course 'Applied Paradoxes,' was found to be fundamentally incompatible with the linear progression of time and causality. We cannot, in good conscience, accredit a program that lists 'retroactively completing your assignments' as a valid academic strategy."</p>
+        </div>
       </div>
-      <div class="program-card">
-        <h3>Biological Research and Design</h3>
-        <p>Combine biology and engineering to solve complex medical challenges.</p>
+      <div class="bureau-card">
+        <svg class="bureau-seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#e0e0e0" stroke="#333" stroke-width="2"/><text x="50" y="55" font-family="EB Garamond" font-size="12" text-anchor="middle">SSS</text></svg>
+        <div>
+            <h3>CENSURED by The Society for Straightforward Syllabi</h3>
+            <p>Reason for non-accreditation: "Review of course syllabi found them to be 'intentionally obtuse,' 'metaphysically hostile,' and in one case, 'written entirely in a non-Euclidean geometric language that induced migraines in our review committee.' The 'Aggressive Engineering' syllabus consisted of a single, blurry photograph of a sledgehammer."</p>
+        </div>
       </div>
-      <div class="program-card">
-        <h3>Sustainable Electrodynamics</h3>
-        <p>Shape the future of sustainable energy solutions and combat climate change.</p>
-      </div>
-      <div class="program-card">
-        <h3>Information Operations</h3>
-        <p>Harness the power of information to drive decision-making and innovation.</p>
-      </div>
-      <div class="program-card">
-        <h3>Mechatronic Symbiosis</h3>
-        <p>Study Group Theory, Collaborative Processes, and Societal Discourse.</p>
-      </div>
-      <div class="program-card">
-        <h3>Counter Espionage</h3>
-        <p>Protect assets and information systems from evolving threats.</p>
-      </div>
-      <div class="program-card">
-        <h3>Lemniscate Cosmos Preservation</h3>
-        <p>Ascertain particular quadrant stability through strategic alliances.</p>
-      </div>
-      <div class="program-card">
-        <h3>Understanding Divinity</h3>
-        <p>Training from https://yehoshuahamashiach.faith/.</p>
-      </div>
+  </section>
+  <!-- END OF UN-ACCREDITATION BUREAU SECTION -->
+
+  <section id="terminal-section">
+    <h2>YUZHOU Systems Terminal</h2>
+    <div class="terminal" id="terminal">
+        <div class="terminal-header">
+            <span>YUZHOU OS [Version 10.0.19042]</span>
+            <div class="terminal-controls"><span></span><span></span><span></span></div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line initial-line">Login successful. Welcome, VALUED_ENTITY_778.</div>
+            <div class="terminal-line initial-line">Type 'help' for a list of available commands.</div>
+            <div class="terminal-prompt">
+                <span>&gt;</span>
+                <input type="text" id="terminal-input" autocomplete="off">
+                <span class="cursor"></span>
+            </div>
+        </div>
     </div>
   </section>
 
@@ -277,5 +663,189 @@ content="Innovating Tomorrow, Today!"/>
     <p>Address: 01-23-31 AICASNSSCSISC, Venus, TX 76084</p>
     <p>&copy; 6000 The United Institute of Technology. <i>All rights reserved.</i></p>
   </footer>
+  
+  <div class="modal-overlay" id="consent-modal">
+    <div class="modal-content">
+        <h3>Cognitive Consent Protocol</h3>
+        <p>This entity utilizes cookies, esoteric tracking runes, and passive psychic resonance to monitor your digital aura and optimize your intellectual journey. By proceeding, you consent to having your existential data catalogued for purposes both mundane and incomprehensible.</p>
+        <button class="modal-button" id="consent-button">I Synergize with This Agreement</button>
+    </div>
+  </div>
+
+<script>
+// --- Self-executing function to encapsulate all our logic ---
+(function() {
+    
+    // --- START OF LIVE ENTROPY FEED LOGIC ---
+    const entropyValue = document.getElementById('entropy-value');
+    const paradoxValue = document.getElementById('paradox-value');
+    
+    if (entropyValue && paradoxValue) {
+        setInterval(() => {
+            let currentEntropy = 98.6 + (Math.random() * 0.3);
+            entropyValue.textContent = `${currentEntropy.toFixed(2)}%`;
+            
+            let currentParadoxes = parseInt(paradoxValue.textContent);
+            if (Math.random() > 0.5) {
+                currentParadoxes += 1;
+            } else if (currentParadoxes > 35) {
+                currentParadoxes -= 1;
+            }
+            paradoxValue.textContent = currentParadoxes;
+
+        }, 2500);
+    }
+    // --- END OF LIVE ENTROPY FEED LOGIC ---
+
+    // --- START OF ADMISSIONS QUIZ LOGIC ---
+    window.nextQuestion = function(step) {
+        if (step === 2) {
+            const name = document.getElementById('applicant-name').value;
+            if (!name.trim()) {
+                // Replaced alert with a less intrusive notification if possible, but alert is fine for this context.
+                alert('Designation is mandatory for psychic profiling.');
+                return;
+            }
+        }
+        
+        const activeQuestion = document.querySelector('.quiz-question.active');
+        if (activeQuestion) activeQuestion.classList.remove('active');
+        
+        const nextQuestionToShow = document.querySelector(`.quiz-question[data-step="${step}"]`);
+        if(nextQuestionToShow) nextQuestionToShow.classList.add('active');
+    }
+
+    window.calculateResults = function() {
+        const name = document.getElementById('applicant-name').value;
+        const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+        const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+        
+        if (!q2 || !q3) {
+            alert('A choice must be made. The universe abhors a vacuum of opinion.');
+            return;
+        }
+
+        let title = "Probationary Ontologist"; // Default title
+        if (q2 === 'c') {
+            title = "Junior Practitioner of Aggressive Engineering";
+        } else if (q3 === 'b') {
+            title = "Specialist in Supercritical Metaphysics";
+        } else if (q2 === 'a' && q3 === 'c') {
+            title = "Theoretician of Glowing Plasma Dynamics";
+        }
+        
+        const studentNameEl = document.getElementById('student-name');
+        const studentTitleEl = document.getElementById('student-title');
+        const studentPhotoEl = document.getElementById('student-id-photo');
+        
+        if(studentNameEl) studentNameEl.textContent = name;
+        if(studentTitleEl) studentTitleEl.textContent = title;
+        if(studentPhotoEl) studentPhotoEl.textContent = name.charAt(0).toUpperCase();
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        if(quizContainer) quizContainer.style.display = 'none';
+        if(resultsContainer) resultsContainer.style.display = 'block';
+    }
+    // --- END OF ADMISSIONS QUIZ LOGIC ---
+
+    // --- START OF TERMINAL LOGIC ---
+    const terminalBody = document.getElementById('terminal-body');
+    if(terminalBody) {
+        const terminalInput = document.getElementById('terminal-input');
+        const terminal = document.getElementById('terminal');
+
+        terminal.addEventListener('click', () => terminalInput.focus());
+
+        terminalInput.addEventListener('keydown', function(event) {
+            if (event.key === "Enter") {
+                const command = terminalInput.value.trim().toLowerCase();
+                const promptLine = this.parentElement;
+                
+                const commandOutput = document.createElement('div');
+                commandOutput.className = 'terminal-line';
+                commandOutput.textContent = `> ${command}`;
+                terminalBody.insertBefore(commandOutput, promptLine);
+
+                processCommand(command);
+                terminalInput.value = '';
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        });
+    }
+
+    function processCommand(command) {
+        const terminalInput = document.getElementById('terminal-input');
+        const promptLine = terminalInput.parentElement;
+        let output = '';
+        switch(command) {
+            case 'help':
+                output = `Available commands:
+  help      - Displays this list of commands.
+  status    - Checks the status of campus systems.
+  faculty   - Lists current esteemed faculty members.
+  joke      - Generates a certified academic punchline.
+  clear     - Clears the terminal screen.
+  date      - Displays the current stardate.`;
+                break;
+            case 'status':
+                output = `System Status:
+  Quantum Realm Stabilizer: ..... NOMINAL
+  Aggressive Engineering Containment Field: ... FLUCTUATING
+  Campus Coffee Machine: ........ OFFLINE (Cause: Existential Crisis)
+  Schrödinger's Cat: ............ INDETERMINATE`;
+                break;
+            case 'faculty':
+                output = `Faculty Roster:
+  - Dr. Ignatius Quantum (Chrono-Mechanics)
+  - Dr. Seraphina Vortex (Post-Structuralist Semiotics)
+  - B. A. Sledgehammer (Aggressive Engineering)`;
+                break;
+            case 'joke':
+                const subjects = ["A sociologist", "a quantum physicist", "and a deconstructionist"];
+                const actions = ["walk into a bar", "observe a particle", "interrogate a text"];
+                const punchlines = ["but the bartender says, 'Is this some kind of meta-joke?'", "but it collapses into a superposition of paying and not paying the tab.", "and the meaning of 'bar' is immediately destabilized."];
+                output = `${subjects[Math.floor(Math.random()*subjects.length)]} ${actions[Math.floor(Math.random()*actions.length)]}, ${punchlines[Math.floor(Math.random()*punchlines.length)]}`;
+                break;
+            case 'clear':
+                const initialLines = terminalBody.querySelectorAll('.initial-line');
+                const nonInitialLines = terminalBody.querySelectorAll('.terminal-line:not(.initial-line)');
+                nonInitialLines.forEach(line => line.remove());
+                return; 
+            case 'date':
+                const year = new Date().getFullYear();
+                const dayOfYear = Math.floor((Date.now() - new Date(year, 0, 0)) / 86400000);
+                output = `Current Stardate: ${year}.${dayOfYear}`;
+                break;
+            default:
+                output = `Command not found: '${command}'. Are you sure you possess the requisite clearance?`;
+        }
+        
+        const outputLine = document.createElement('div');
+        outputLine.className = 'terminal-line';
+        outputLine.textContent = output;
+        terminalBody.insertBefore(outputLine, promptLine);
+    }
+    // --- END OF TERMINAL LOGIC ---
+    
+    // --- START OF MODAL LOGIC ---
+    const modalOverlay = document.getElementById('consent-modal');
+    const consentButton = document.getElementById('consent-button');
+    if (modalOverlay) {
+        setTimeout(() => {
+            if (!sessionStorage.getItem('yuzhouConsent')) {
+                modalOverlay.classList.add('active');
+            }
+        }, 2000);
+        consentButton.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            sessionStorage.setItem('yuzhouConsent', 'true');
+        });
+    }
+    // --- END OF MODAL LOGIC ---
+
+})();
+</script>
+
 </body>
 </html>
